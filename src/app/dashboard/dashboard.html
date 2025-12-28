@@ -1,0 +1,33 @@
+<!-- Avatar: hide when collapsed -->
+<img
+  *ngIf="!collapsed"
+  class="avatar mat-elevation-z8"
+  src="https://picsum.photos/200/300"
+/>
+
+<h4 class="name" *ngIf="!collapsed">Kavinkumar</h4>
+<p class="designation" *ngIf="!collapsed">Software Developer</p>
+
+<mat-divider></mat-divider>
+
+<button mat-button class="menu-button">
+  <mat-icon>home</mat-icon>
+  <span *ngIf="!collapsed">Home</span>
+</button>
+
+<button mat-button class="menu-button">
+  <mat-icon>person</mat-icon>
+  <span *ngIf="!collapsed">Profile</span>
+</button>
+
+<button mat-button class="menu-button">
+  <mat-icon>info</mat-icon>
+  <span *ngIf="!collapsed">About</span>
+</button>
+
+<mat-divider></mat-divider>
+
+<button mat-button class="menu-button">
+  <mat-icon>help</mat-icon>
+  <span *ngIf="!collapsed">Help</span>
+</button>

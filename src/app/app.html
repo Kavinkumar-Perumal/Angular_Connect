@@ -1,0 +1,63 @@
+<ng-container *ngIf="showLayout(); else noLayout">
+
+<mat-toolbar class="app-toolbar">
+
+  <!-- Left menu button -->
+  <!-- <button mat-icon-button (click)="drawer.toggle()">
+    <mat-icon class="nav-icon">menu</mat-icon>
+  </button> -->
+
+<button mat-icon-button (click)="toggleSidenav()">
+  <mat-icon class="nav-icon">menu</mat-icon>
+</button>
+
+
+  <!-- Spacer to push email to center -->
+  <span class="spacer-left">Dashboard</span>
+
+  <!-- Centered email -->
+  <span *ngIf="email" class="user-email">{{ email }}</span>
+
+  <!-- Spacer to push icons to right -->
+  <span class="spacer-right"></span>
+
+  <!-- RIGHT ICONS -->
+  <div class="right-icons">
+    <button mat-icon-button class="nav-icon"><mat-icon>smartphone</mat-icon></button>
+    <button mat-icon-button class="nav-icon"><mat-icon>sync</mat-icon></button>
+    <button mat-icon-button class="nav-icon"><mat-icon>lock</mat-icon></button>
+    <button mat-icon-button class="nav-icon"><mat-icon>notifications_active</mat-icon></button>
+    <button mat-icon-button class="nav-icon" (click)="logout()">
+      <mat-icon>logout</mat-icon>
+    </button>
+  </div>
+
+</mat-toolbar>
+
+
+
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    mode="side"
+    opened
+    [class.collapsed]="isCollapsed"
+    [style.width]="isCollapsed ? '70px' : '250px'"
+  >
+    <app-dashboard [collapsed]="isCollapsed"></app-dashboard>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div class="content">
+      <h2>Welcome to the World of Mark Antony Mamae..!</h2>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+
+</ng-container>
+
+<ng-template #noLayout >
+  <router-outlet></router-outlet>
+</ng-template>

@@ -1,0 +1,101 @@
+<div class="login-container">
+  <mat-card>
+
+    <mat-card-header class="center-header">
+      <h2>Login</h2>
+    </mat-card-header>
+
+    <mat-card-content>
+
+      <!-- AVATAR -->
+      <img
+        class="avatar mat-elevation-z8"
+        src="https://picsum.photos/200/300"
+        alt="User Avatar"
+      />
+
+      <form #loginForm="ngForm" (ngSubmit)="login()">
+
+
+
+        <!-- EMAIL -->
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input
+            matInput
+            name="email"
+            [(ngModel)]="user.email"
+            required
+          />
+          <mat-icon matSuffix>email</mat-icon>
+        </mat-form-field>
+
+        <!-- PASSWORD -->
+        <mat-form-field>
+          <mat-label>Password</mat-label>
+          <input
+            matInput
+            type="password"
+            name="password"
+            [(ngModel)]="user.password"
+            required
+          />
+          <mat-icon matSuffix>lock</mat-icon>
+        </mat-form-field>
+
+        <!-- CAPTCHA ROW -->
+        <div class="captcha-row">
+
+          <!-- CAPTCHA TEXT -->
+          <div class="captcha-box">
+            {{ captchaText }}
+          </div>
+
+          <!-- REFRESH -->
+          <button
+            type="button"
+            mat-icon-button
+            class="captcha-refresh"
+            (click)="generateCaptcha()">
+            <mat-icon>refresh</mat-icon>
+          </button>
+
+          <!-- CAPTCHA INPUT -->
+          <!-- <mat-form-field class="captcha-input" appearance="outline">
+            <mat-label>Captcha</mat-label>
+            <input
+              matInput
+              name="captcha"
+              [(ngModel)]="user.captcha"
+              required
+            />
+          </mat-form-field> -->
+          <input
+    class="captcha-input-plain"
+    type="text"
+    maxlength="5"
+    [(ngModel)]="user.captcha"
+    name="captcha"
+    required
+    placeholder="Enter Captcha"
+  />
+
+        </div>
+        <!-- ERROR -->
+        <mat-error *ngIf="!loginValid">
+          Invalid Email / Password / Captcha
+        </mat-error>
+        <!-- LOGIN BUTTON -->
+        <button
+          mat-raised-button
+          color="primary"
+          class="login-btn"
+          [disabled]="!loginForm.valid">
+          Login
+        </button>
+
+      </form>
+
+    </mat-card-content>
+  </mat-card>
+</div>
